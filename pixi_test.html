@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="pixi-4.7.1.min.js"></script>
+    <script>
+        addEventListener("load",()=>{
+            let {Graphics}=PIXI;
+            let app=new PIXI.Application({
+                width: 256,
+                height: 256,
+            });
+            let body=document.querySelector("body");
+            body.appendChild(app.view);
+            app.view.style.position="absolute";
+            app.view.style.margin="0";
+            app.view.style.padding="0";
+            app.renderer.backgroundColor= 0xff0000;
+            app.renderer.autoResize=true;
+            app.renderer.resize(512,512);
+
+            let rect=new Graphics();
+            rect.beginFill(0xff0000);
+            rect.lineStyle(4, 0x00ff00, 1);
+            rect.drawRect(0, 0, 100, 100);
+            rect.endFill();
+            app.stage.addChild(rect);
+
+            let circle=new Graphics();
+            circle.lineStyle(4, 0x99CCFF, 1);
+            circle.beginFill(0x921234);
+            circle.drawEllipse(0, 0, 120,170);
+            circle.beginFill(0x92f124);
+            circle.drawCircle(0, 0, 100);
+            circle.endFill();
+            console.log(circle);
+            
+            app.stage.addChild(circle);
+
+            addEventListener("mousemove",(e)=>{
+                let {clientX,clientY}=e;
+                rect.x=clientX;
+                rect.y=clientY;
+                circle.x=clientX;
+                circle.y=clientY;
+            })
+
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

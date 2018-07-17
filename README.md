@@ -1,2 +1,2 @@
 # WebGl_test
-WebGL测试
+WebGL练习
